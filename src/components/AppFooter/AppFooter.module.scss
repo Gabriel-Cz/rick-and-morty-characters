@@ -1,0 +1,46 @@
+@use '../../customMixins' as customMixins;
+
+$footerBackground: rgba($color: #43A047, $alpha: 0.50);
+$fontButton: 600 24px 'Source Sans Pro', sans-serif;
+$prevButtonColors: #FDD835;
+$nextButtonColors: #1E88E5;
+
+.footer {
+    background-color: $footerBackground;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .prevButton {
+        @include customMixins.buttonColor($prevButtonColors, $prevButtonColors, $prevButtonColors);
+    }
+    .nextButton {
+        @include customMixins.buttonColor($nextButtonColors, $nextButtonColors, $nextButtonColors);
+        @extend .customButton;
+    }
+    .pagesIndexWrapper {
+        margin-left: 20px;
+        margin-right: 20px;
+        .link {
+            text-decoration: none;
+        }
+        span {
+            margin-right: 5px;
+            margin-left: 5px;
+            padding: 5px 7px;
+            border: 1px solid floralwhite;
+            color: floralwhite;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: $buttonTransition;
+            &:hover {
+                background-color: floralwhite;
+                color: black;
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@use '../../utils/mediaMixin' as mixin;
+
+//Template Columns
+$xsTemplateColumns: repeat(1, 1fr);
+$smTemplateColumns: repeat(1, 1fr);
+$mdTemplateColumns: repeat(2, 1fr);
+$lgTemplateColumns: repeat(3, 1fr);
+$xlTemplateColumns: repeat(4, 1fr);
+
+$columnGap: 30px;
+
+.charactersContainer{
+    width: 95%;
+    margin-top: 75px;
+}
+
+.row {
+    @include mixin.media(xs) {
+        grid-template-columns: $xsTemplateColumns;
+    }
+    @include mixin.media(sm) {
+        grid-template-columns: $smTemplateColumns;
+    }
+    @include mixin.media(md) {
+        grid-template-columns: $mdTemplateColumns;
+    }
+    @include mixin.media(lg) {
+        grid-template-columns: $lgTemplateColumns;
+    }
+    display: grid;
+    grid-template-columns: $xlTemplateColumns;
+    grid-template-rows: 1fr;
+    grid-column-gap: $columnGap;
+    grid-row-gap: 30px;
+    .column {
+      grid-area: auto;
+    }
+}

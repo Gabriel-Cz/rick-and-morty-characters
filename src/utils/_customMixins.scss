@@ -1,0 +1,15 @@
+$buttonTransition: 0.3s ease-in-out;
+
+@mixin buttonColor($borderColor, $backgroundColor, $textColor) {
+    border: 1px solid $borderColor;
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
+    color: $textColor;
+    background-color: transparent;
+    transition: $buttonTransition;
+    &:hover {
+        transition: $buttonTransition;
+        background-color: $backgroundColor;
+        color: floralwhite;
+    }
+}

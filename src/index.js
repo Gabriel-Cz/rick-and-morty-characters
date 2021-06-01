@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
+import axios from 'axios'
 import reportWebVitals from './reportWebVitals';
+
+axios.defaults.baseURL = 'https://rickandmortyapi.com/api'
 
 ReactDOM.render(
   <React.StrictMode>

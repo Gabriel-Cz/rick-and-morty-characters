@@ -1,0 +1,92 @@
+//Card Style
+$boxShadow: 0px 4px 4px rgba($color: #000000, $alpha: 0.25);
+$bgCardColor: #FAFAFA;
+$informationFont: 'Source Sans Pro', sans-serif;
+
+//Custom Card Style By Status
+$aliveBorderColor: #66BB6A;
+$alivePillColor: #66BB6A;
+$deadBorderColor: #EF5350;
+$deadPillColor: #EF5350;
+
+
+@mixin pill ($bgPillColor) {
+    margin-bottom: -10px;
+    margin-right: -10px;
+    position: absolute;
+    padding: 3px 15px;
+    border-radius: 20px;
+    background-color: $bgPillColor;
+    bottom: 0;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    right: 0;
+    color: floralwhite;
+    box-shadow: $boxShadow;
+    ins {
+        text-decoration: none;
+    }
+}
+
+@mixin characterInformation($borderColor) {
+    position: relative;
+    grid-area: 1 / 6 / 2 / 13;
+    display: flexbox;
+    padding: 0px 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: solid 1px rgba($color: $borderColor, $alpha: 0.7);
+    border-left: none;
+    h4 {
+        ins {
+            margin-left: 5px;
+            text-decoration: none;
+            font-weight: 400;
+        }
+    }
+}
+
+.characterCard {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    background: $bgCardColor;
+    font-family: $informationFont;
+    border-radius: 5px;
+    box-shadow: $boxShadow;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    &:hover {
+        transform: translateY(-7px);
+        box-shadow: 0px 6px 10px rgba($color: #000000, $alpha: 0.25);
+        .characterInformationColumn-Dead {
+            border-color: rgba($color: $deadBorderColor, $alpha: 1);
+        }
+        .characterInformationColumn-Alive {
+            border-color: rgba($color: $aliveBorderColor, $alpha: 1);
+        }
+    }
+    .characterImageColumn {
+        grid-area: 1 / 1 / 2 / 6; 
+        height: 100%;
+        display: flex;
+        img {
+          height: 100%;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+        }
+    }
+    .characterInformationColumn-Alive {
+        @include characterInformation($aliveBorderColor);
+        .pill-Alive {
+            @include pill($alivePillColor);
+        }
+    }
+    .characterInformationColumn-Dead {
+        @include characterInformation($deadBorderColor);
+        .pill-Dead {
+            @include pill($deadPillColor);
+        }
+    }
+}
